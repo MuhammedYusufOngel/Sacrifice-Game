@@ -64,7 +64,7 @@ Sacrafice/
 
 ## 🤝 Contributing & Feedback
 
-Since this project is currently in the early development stages, feedback, bug reports, and suggestions are welcome! Feel free to open an [Issue](https://github.com/YOUR_USERNAME/Sacrifice-Game/issues) if you have any ideas regarding the game mechanics or sanity features.
+Since this project is currently in the early development stages, feedback, bug reports, and suggestions are welcome! Feel free to open an [Issue](https://github.com/MuhammedYusufOngel/Sacrifice-Game/issues) if you have any ideas regarding the game mechanics or sanity features.
 
 ---
 
