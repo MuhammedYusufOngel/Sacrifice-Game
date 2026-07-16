@@ -1,8 +1,8 @@
-using UnityEngine;
+﻿using UnityEngine;
 
 public class WeaponFire : MonoBehaviour
 {
-    Camera fpsCam;
+    public Camera fpsCam;
     bool isShooting = false;
 
     public float range = 100f;
@@ -10,20 +10,34 @@ public class WeaponFire : MonoBehaviour
 
     [Header("Sekme")]
     public WeaponRecoil weaponRecoil;
+    
     CameraRecoil cameraRecoil;
+
+    private void Awake()
+    {
+        Debug.Log("Kod çalıştırıldı::Awake");
+        if (transform.parent.parent.parent != null)
+        {
+            Debug.Log("transform.parent.parent.parent: " + transform.parent.parent.parent.name);
+
+            cameraRecoil = transform.parent.parent.parent.parent.GetComponent<CameraRecoil>();
+        }
+
+    }
+
     void Start()
     {
-        fpsCam = GetComponentInParent<Camera>();
-
-        if(transform.parent.parent != null)
+        Debug.Log("Kod çalıştırıldı.");
+        if (transform.parent.parent != null)
         {
+            fpsCam = GetComponentInParent<Camera>();
             cameraRecoil = GetComponentInParent<CameraRecoil>();
         }
     }
 
     void Update()
     {
-        if (Input.GetButtonDown("Fire1") && transform.parent.parent != null)
+        if (Input.GetButtonDown("Fire1"))
         {
             isShooting = true;
         }
@@ -31,24 +45,33 @@ public class WeaponFire : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if(isShooting)
+        bool isInPlayer = PlayerManager.instance.GetIsInPlayer();
+
+        if (isInPlayer)
         {
-            Shoot();
-            isShooting = false;
+            if (isShooting)
+            {
+                Shoot();
+                isShooting = false;
+            }
         }
     }
 
     private void Shoot()
     {
-        RaycastHit hit;
-        if(Physics.Raycast(fpsCam.transform.position, fpsCam.transform.forward, out hit, range))
+        if(fpsCam != null)
         {
-            Debug.Log(hit.transform.name);
+            RaycastHit hit;
+            if (Physics.Raycast(fpsCam.transform.position, fpsCam.transform.forward, out hit, range))
+            {
+                Debug.Log(hit.transform.name);
+            }
+
+            Instantiate(bullet, hit.point, Quaternion.LookRotation(hit.normal));
+
+            cameraRecoil.TriggerRecoil();
+            weaponRecoil.TriggerWeaponRecoil();
         }
 
-        Instantiate(bullet, hit.point, Quaternion.LookRotation(hit.normal));
-
-        cameraRecoil.TriggerRecoil();
-        weaponRecoil.TriggerWeaponRecoil();
     }
 }
