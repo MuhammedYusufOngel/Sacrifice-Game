@@ -15,7 +15,6 @@ public class WeaponFire : MonoBehaviour
 
     private void Awake()
     {
-        Debug.Log("Kod çalıştırıldı::Awake");
         if (transform.parent.parent.parent != null)
         {
             Debug.Log("transform.parent.parent.parent: " + transform.parent.parent.parent.name);
