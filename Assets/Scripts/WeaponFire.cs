@@ -11,6 +11,9 @@ public class WeaponFire : MonoBehaviour
     [Header("Sekme")]
     public WeaponRecoil weaponRecoil;
 
+    [Header("Particle System")]
+    public ParticleSystem smokeSystem;
+
     CameraRecoil cameraRecoil;
 
     private void Awake()
@@ -49,6 +52,20 @@ public class WeaponFire : MonoBehaviour
             {
                 Shoot();
                 PlayerManager.instance.DecreaseCurrentAmmoForGun();
+
+                float ratio = (float) PlayerManager.instance.GetCurrentAmmoForGun() / PlayerManager.instance.GetMaxAmmoForGun();
+
+                Debug.Log("PlayerManager.instance.GetCurrentAmmoForGun() / PlayerManager.instance.GetMaxAmmoForGun(): " + ratio);
+
+                if (ratio <= 0.2f)
+                {
+                    smokeSystem.Play();
+                }
+                else
+                {
+                    smokeSystem.Stop();
+                }
+
                 isShooting = false;
             }
         }

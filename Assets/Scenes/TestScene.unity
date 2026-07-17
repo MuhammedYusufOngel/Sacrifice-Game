@@ -883,6 +883,7 @@ MonoBehaviour:
   range: 100
   bullet: {fileID: 3724957991381142459, guid: 68aabe14944b0a84dbe2578172545186, type: 3}
   weaponRecoil: {fileID: 1656563351}
+  smokeSystem: {fileID: 1212969970}
 --- !u!1 &1014846391 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -8391222552659086748, guid: 8607650ca4b0f9b4696ccb98df4d018f, type: 3}
@@ -1116,6 +1117,11 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 535529533}
   m_SourcePrefab: {fileID: 100100000, guid: aa2b75fd37eaf6a40b3567a328dc1406, type: 3}
+--- !u!198 &1212969970 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 6911072836750703937, guid: 6223893ea42e3b14098d94efce299955, type: 3}
+  m_PrefabInstance: {fileID: 1656563349}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1475144470
 GameObject:
   m_ObjectHideFlags: 0
@@ -1306,7 +1312,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1771127610359633244, guid: 6223893ea42e3b14098d94efce299955, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.43
+      value: -0.509
       objectReference: {fileID: 0}
     - target: {fileID: 4743086809979148335, guid: 6223893ea42e3b14098d94efce299955, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1369,6 +1375,18 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1928144886}
     - target: {fileID: 6911072836750703937, guid: 6223893ea42e3b14098d94efce299955, type: 3}
+      propertyPath: playOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6911072836750703937, guid: 6223893ea42e3b14098d94efce299955, type: 3}
+      propertyPath: ShapeModule.type
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6911072836750703937, guid: 6223893ea42e3b14098d94efce299955, type: 3}
+      propertyPath: ShapeModule.angle
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 6911072836750703937, guid: 6223893ea42e3b14098d94efce299955, type: 3}
       propertyPath: SizeModule.enabled
       value: 1
       objectReference: {fileID: 0}
@@ -1377,12 +1395,24 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6911072836750703937, guid: 6223893ea42e3b14098d94efce299955, type: 3}
+      propertyPath: SizeModule.separateAxes
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6911072836750703937, guid: 6223893ea42e3b14098d94efce299955, type: 3}
+      propertyPath: ShapeModule.radiusThickness
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6911072836750703937, guid: 6223893ea42e3b14098d94efce299955, type: 3}
       propertyPath: InitialModule.startSize.scalar
-      value: 4
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 6911072836750703937, guid: 6223893ea42e3b14098d94efce299955, type: 3}
+      propertyPath: EmissionModule.rateOverTime.scalar
+      value: 152.07
       objectReference: {fileID: 0}
     - target: {fileID: 6911072836750703937, guid: 6223893ea42e3b14098d94efce299955, type: 3}
       propertyPath: InitialModule.startLifetime.scalar
-      value: 5
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 6911072836750703937, guid: 6223893ea42e3b14098d94efce299955, type: 3}
       propertyPath: InitialModule.startColor.maxColor.b
