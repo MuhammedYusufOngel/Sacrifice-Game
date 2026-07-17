@@ -22,9 +22,11 @@ public class HeadBob : MonoBehaviour
 
         if (horizontalVelocity.magnitude > 0.1f && _controller.isGrounded)
         {
-            _timer += Time.deltaTime * bobSpeed;
+            float ratio = (float) PlayerManager.instance.GetMaxAmmoForGun() - PlayerManager.instance.GetCurrentAmmoForGun() + 1;
 
-            float newY = _defaultPosY + Mathf.Sin(_timer) * bobAmount;
+            _timer += Time.deltaTime * (bobSpeed + ratio);
+
+            float newY = _defaultPosY + Mathf.Sin(_timer) * (bobAmount + ratio);
             transform.localPosition = new Vector3(transform.localPosition.x, newY, transform.localPosition.z);
         }
         else

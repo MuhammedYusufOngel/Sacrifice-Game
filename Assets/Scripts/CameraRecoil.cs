@@ -24,11 +24,10 @@ public class CameraRecoil : MonoBehaviour
         Cursor.visible = false;
     }
 
-    private void FixedUpdate()
+    void Update()
     {
         float mouseX = Input.GetAxis("Mouse X") * sensitivity;
         float mouseY = Input.GetAxis("Mouse Y") * sensitivity;
-
 
         xRotation -= mouseY;
         xRotation = Mathf.Clamp(xRotation, -90.0f, 90.0f);
@@ -42,12 +41,19 @@ public class CameraRecoil : MonoBehaviour
         transform.parent.Rotate(Vector3.up * mouseX);
     }
 
+    private void FixedUpdate()
+    {
+
+    }
+
     public void TriggerRecoil()
     {
+        float ratio = (float) PlayerManager.instance.GetMaxAmmoForGun() / PlayerManager.instance.GetCurrentAmmoForGun();
+        
         targetRotation += new Vector3(
-            recoilX,
-            Random.Range(-recoilY, recoilY),
-            Random.Range(-recoilZ, recoilZ)
+            recoilX + ratio,
+            Random.Range(-recoilY + ratio, recoilY + ratio),
+            Random.Range(-recoilZ + ratio, recoilZ + ratio)
         );
     }
 }

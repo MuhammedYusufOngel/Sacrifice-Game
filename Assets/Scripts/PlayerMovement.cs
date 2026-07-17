@@ -61,10 +61,10 @@ public class PlayerMovement : MonoBehaviour
         {
             _isJumping = true;
         }
+        Move();
     }
 
     private void FixedUpdate()
     {
-        Move();
     }
 }

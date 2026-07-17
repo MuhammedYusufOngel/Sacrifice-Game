@@ -10,7 +10,7 @@ public class WeaponFire : MonoBehaviour
 
     [Header("Sekme")]
     public WeaponRecoil weaponRecoil;
-    
+
     CameraRecoil cameraRecoil;
 
     private void Awake()
@@ -40,20 +40,23 @@ public class WeaponFire : MonoBehaviour
         {
             isShooting = true;
         }
-    }
-
-    private void FixedUpdate()
-    {
+        
         bool isInPlayer = PlayerManager.instance.GetIsInPlayer();
 
         if (isInPlayer)
         {
-            if (isShooting)
+            if (isShooting && PlayerManager.instance.GetCurrentAmmoForGun() > 0)
             {
                 Shoot();
+                PlayerManager.instance.DecreaseCurrentAmmoForGun();
                 isShooting = false;
             }
         }
+    }
+
+    private void FixedUpdate()
+    {
+
     }
 
     private void Shoot()
@@ -70,6 +73,7 @@ public class WeaponFire : MonoBehaviour
 
             cameraRecoil.TriggerRecoil();
             weaponRecoil.TriggerWeaponRecoil();
+            VignetteController.instance.UpdateVignette();
         }
 
     }

@@ -27,11 +27,6 @@ public class WeaponRecoil : MonoBehaviour
 
     void Update()
     {
-
-    }
-
-    private void FixedUpdate()
-    {
         targetPosition = Vector3.Lerp(targetPosition, Vector3.zero, returnSpeed * Time.deltaTime);
         targetRotation = Vector3.Lerp(targetRotation, Vector3.zero, returnSpeed * Time.deltaTime);
 
@@ -40,6 +35,11 @@ public class WeaponRecoil : MonoBehaviour
 
         transform.localPosition = currentPosition;
         transform.localRotation = Quaternion.Euler(currentRotation);
+    }
+
+    private void FixedUpdate()
+    {
+
     }
 
     public void TriggerWeaponRecoil()
