@@ -7,8 +7,9 @@ public class PlayerManager : MonoBehaviour
     public GameObject Gun;
     public Camera fpsCam;
     public float range = 10f;
+    
     public bool isInPlayer = false;
-
+    public bool isAimOpen = false;
 
     [Header("Mermi Ayarlar�")]
     [SerializeField] private int maxAmmo_Gun = 30;
@@ -61,10 +62,22 @@ public class PlayerManager : MonoBehaviour
     {
         return isInPlayer;
     }
-
+    public void Aim()
+    {
+        // if(Input.GetButton("Fire2") && isInPlayer)
+        // {
+        //     isAimOpen = true;
+        // }
+        // else
+        // {
+        //     isAimOpen = false;
+        // }
+    }
+    
     void Update()
     {
         Take();
+        Aim();
     }
 
     private void FixedUpdate()

@@ -3,8 +3,6 @@ using UnityEngine;
 public class WeaponMaterial : MonoBehaviour
 {
     private Material _weaponMaterial;
-    private float elapsedTime;
-
     void Start()
     {
         _weaponMaterial = GetComponent<Renderer>().material;
@@ -18,15 +16,7 @@ public class WeaponMaterial : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        elapsedTime += Time.deltaTime;
-
         float ratio = (float)PlayerManager.instance.GetCurrentAmmoForGun() / PlayerManager.instance.GetMaxAmmoForGun();
-        
-        if(elapsedTime > 1f)
-        {
-            elapsedTime = 0f;
-            Debug.Log("ratio: " + ratio);
-        }
         
         if(ratio > 0.8f)
         {

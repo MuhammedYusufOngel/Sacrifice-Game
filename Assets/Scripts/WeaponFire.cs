@@ -18,7 +18,7 @@ public class WeaponFire : MonoBehaviour
 
     private void Awake()
     {
-        if (transform.parent.parent.parent != null)
+        if (transform.parent.parent != null)
         {
             Debug.Log("transform.parent.parent.parent: " + transform.parent.parent.parent.name);
 
@@ -39,7 +39,7 @@ public class WeaponFire : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetButtonDown("Fire1"))
+        if (Input.GetButtonDown("Fire1") && PlayerManager.instance.isAimOpen)
         {
             isShooting = true;
         }
@@ -48,7 +48,7 @@ public class WeaponFire : MonoBehaviour
 
         if (isInPlayer)
         {
-            if (isShooting && PlayerManager.instance.GetCurrentAmmoForGun() > 0)
+            if (isShooting && PlayerManager.instance.GetCurrentAmmoForGun() > 0 && PlayerManager.instance.isAimOpen)
             {
                 Shoot();
                 PlayerManager.instance.DecreaseCurrentAmmoForGun();

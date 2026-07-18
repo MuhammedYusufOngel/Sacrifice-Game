@@ -51,9 +51,9 @@ public class CameraRecoil : MonoBehaviour
         float ratio = (float) PlayerManager.instance.GetMaxAmmoForGun() / PlayerManager.instance.GetCurrentAmmoForGun();
         
         targetRotation += new Vector3(
-            recoilX + ratio,
-            Random.Range(-recoilY + ratio, recoilY + ratio),
-            Random.Range(-recoilZ + ratio, recoilZ + ratio)
+            recoilX,
+            Random.Range(-recoilY-ratio, recoilY+ratio),
+            Random.Range(-recoilZ-ratio, recoilZ+ratio)
         );
     }
 }
